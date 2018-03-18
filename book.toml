@@ -1,5 +1,8 @@
 [book]
-authors = ["FanShupei"]
+authors = ["电子工程系硬件部"]
 multilingual = false
 src = "src"
 title = "STM32 电设教程"
+
+[build]
+create-missing = true
