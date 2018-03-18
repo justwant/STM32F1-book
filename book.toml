@@ -1,0 +1,5 @@
+[book]
+authors = ["FanShupei"]
+multilingual = false
+src = "src"
+title = "STM32 电设教程"
