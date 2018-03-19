@@ -4,5 +4,6 @@
 - [安装](./installation.md)
   - [STM32CubeMX](./installation/cubemx.md)
   - [Keil MDK](./installation/keil.md)
+  - [GCC + OpenOCD](./installation/gcc_openocd.md)
   - [St-Link](./installation/stlink.md)
   - [串口](./installation/serial.md)
