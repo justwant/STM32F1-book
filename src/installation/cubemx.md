@@ -1,4 +1,4 @@
-# STM32CubeMX
+﻿# STM32CubeMX
 
 本节介绍 STM32CubeMX 的安装。STM32CubeMX 是生成STM32初始化代码的工具，能以图形界面的方式配置STM32所需资源，简化初始化代码的编写。其能够导出适用于多种开发环境的工程文件。
 
