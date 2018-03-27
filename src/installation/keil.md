@@ -1,4 +1,4 @@
-﻿# Keil MDK-ARM
+# Keil MDK-ARM
 
 本章介绍Keil MDK-ARM的安装。Keil MDK-ARM是美国Keil软件公司（现已被ARM公司收购）出品的支持ARM微控制器的一款IDE（集成开发环境）。
 
@@ -11,7 +11,7 @@ MDK-ARM包含了工业标准的Keil C编译器、宏汇编器、调试器、实�
 - `Keil.STM32F1xx_DFP.2.2.0.pack`
 
 下载地址：
-<https://drive.tsinghua.edu.cn/d/5d45a6a34b5241ee85d0/>
+<http://www.keil.com/download/product>
 
 ## 安装流程
 
