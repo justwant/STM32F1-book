@@ -6,11 +6,12 @@
 
 ---
 所需文件：
--官方固件包 `STM32F10x_StdPeriph_Lib_V3.5.0.zip`
+-官方固件包 `STM32F10x_StdPeriph_Lib_V3.5.0`
 -Demo文件`STM32-DEMO.zip`
 
 下载地址：
-<http://openedv.com/posts/list/6054.htm>
+<http://www.st.com/internet/com/SOFTWARE_RESOURCES/SW_COMPONENT/FIRMWARE/stm32f10x_stdperiph_lib.zip>
+（选择适用于stm32f1的`stsw-stm32054`下载即可）
 
 ## 基于固件库的MDK5工程模板建立
 1. 在电脑某个目录下建立一个新文件夹，存放之后的工程相关文件，比如`STM32_test`. 在文件夹里建立子文件夹`User`、`Projects`和`Platform`。
@@ -20,13 +21,7 @@
   * `Projects`用于存放工程文件，内部可建立一个`Output`文件夹来保存输出文件
   * `Platform`用于保存端口初始化和中断的操作
 
-2. 打开所需的官方固件包。
-  * 将文件夹`STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver`复制到刚刚建立的根文件夹里，作为库文件，其中`src`文件夹存放的是固件库的.c文件，`inc`存放的是对应的.h文件
-
-  * 将文件夹`STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\startup\arm`中的`startup_stm32f10x_hd.s`复制到刚刚建立的`Projects`文件夹下，是对应于大容量芯片的启动文件
-
-  * 将`STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x`目录下的三个文件`stm32f10x.h`、`system_stm32f10x.c`、`system_stm32f10x.h`和
-  `STM32F10x_StdPeriph_Lib_V3.5.0\Project\STM32F10x_StdPeriph_Template`目录下的`stm32f10x_conf.h`、`stm32f10x_it.c`、`stm32f10x_it.h`、`system_stm32f10x.c`复制到`Platform`文件夹下。
+2. 打开所需的官方固件包文件夹。将 `STM32F10x_StdPeriph_Lib_V3.5.0\Project\STM32F10x_StdPeriph_Template`目录下的`stm32f10x_it.c`、`stm32f10x_it.h`复制到`Platform`文件夹下。
 
 3. 打开软件，在工具栏选择`Project->New Uvision Project`,定位在刚刚建立的`Projects`目录下
 
@@ -37,7 +32,7 @@
 
 ![](../assets/setup-keil/setup-2.png)
 
-5. 点击`OK`，会弹出`Manage Run-Time Environment`对话框，可以添加自己需要的组建方便构建开发环境，此处仅需点击`Cancel`
+5. 点击`OK`，会弹出`Manage Run-Time Environment`对话框，可以添加自己需要的组件方便构建开发环境。在`CMSIS`目录下勾选`CORE`，打开`Device`目录，勾选`Startup`添加启动文件，打开`StdPeriph Drivers`根据需要添加不同的固件库，也可直接勾选所有选项。对于点亮LED的实验来说，只用勾选`EXTI`、`Flash`、`Framwork`、`GPIO`、`RCC`选项即可，对应中断、端口配置、时钟等相关的支持。设置完后点击`OK`。
 
 ![](../assets/setup-keil/setup-3.png)
 
@@ -45,11 +40,11 @@
 
 ![](../assets/setup-keil/setup-4.png)
 
-7. `Project Targets`一栏，双击将`Target 1`改为工程的名字`STM32-test`,在`Groups`一栏删掉`Source Group1`,新建`USER`、`Platform`、`STM32F1Lib`、`StartUp`的`Groups`
+7. `Project Targets`一栏，双击将`Target 1`改为工程的名字`STM32-test`,在`Groups`一栏删掉`Source Group1`,新建`USER`、`Platform`、的`Groups`
 
 ![](../assets/setup-keil/setup-5.png)
 
-8. 选中特定的Groups,点击`Add Files`,定位到刚才建立的目录里。将`Platform`里的.c文件加入到对应的*Group*,将`src`文件里的文件加入到`STM32F1Lib`，将`Projects`里对应的启动文件加入到`StartUp`,注意更改文件类型为`All files`才可以看到.s的文件。
+8. 选中特定的`Groups`,点击`Add Files`,定位到刚才建立的目录里。将`Platform`里的.c文件加入到对应的`Group`,
 点`OK`后就可以看到这样的工程文件系统了。
 
 ![](../assets/setup-keil/setup-6.png)
@@ -102,5 +97,5 @@ Keil5上方工具栏如下图：
 
 点击`OK/确认`回到主界面。自此所有设置结束。
 
-如果是新建工程，那么可以开始主函数文件代码的相关编写。
-如果是利用的`STM32-DEMO`文件，那么可以点击编译按钮，进行编译，没有Error和Warning说明编译成功，点击`LOAD`按钮进行烧写，窗口下方出现进度条，进度条完成后，观察系统板上LED的情况，如果1s亮1s灭循环则说明程序烧写成功。
+以上便是从空白开始新建工程的相关步骤，接下来就可以开始主要代码的编写了。
+如果是复制`STM32-DEMO`文件，那么可以点击编译按钮，进行编译，没有Error和Warning说明编译成功，点击`LOAD`按钮进行烧写，窗口下方出现进度条，进度条完成后，观察系统板上LED的情况，如果1s亮1s灭循环则说明程序烧写成功。
