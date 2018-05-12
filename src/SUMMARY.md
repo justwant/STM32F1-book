@@ -9,3 +9,4 @@
   - [串口](./installation/serial.md)
 - [Basic](./basic.md)
    - [Setup](./basic/Setup.md)
+   - [Blink](./basic/Blink.md)

@@ -1,4 +1,4 @@
-# Keil之新建工程
+# Keil之工程配置
 ---
 本节介绍在Keil环境下新建工程的相关操作，包括`基于固件库的MDK5工程模板建立`和`工程配置相关说明`。Keil下的新建工程比熟悉的Visual Studio显得要繁琐许多，完成工程时可在工程模板的基础上写入核心代码，以下内容可以跟着走一遍流程，也可跳到`工程配置说明`部分，利用`STM32-DEMO\Projects\project.Uvproj`直接开始代码的编写，其它只当做说明文件在需要时再做参考。样例以STM32F103RCT6型号为参照。
 
@@ -40,7 +40,7 @@
 
 ![](../assets/setup-keil/setup-4.png)
 
-7. `Project Targets`一栏，双击将`Target 1`改为工程的名字`STM32-test`,在`Groups`一栏删掉`Source Group1`,新建`USER`、`Platform`、的`Groups`
+7. `Project Targets`一栏，双击将`Target 1`改为工程的名字`STM32-test`,在`Groups`一栏删掉`Source Group1`,新建`USER`、`Platform`的`Groups`
 
 ![](../assets/setup-keil/setup-5.png)
 
