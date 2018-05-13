@@ -123,6 +123,7 @@ typedef enum
                 GPIO_ResetBits(GPIOD,GPIO_Pin_2)
 
 void LED_GPIO_Config(void);
+#endif /*__LED_H*/
 ```
 在`led.h`中包含了标准库头文件、利用宏定义简化控制灯亮灭的函数的表达，并对`led.c`中的函数作了声明。
 值得注意的是在工程中的每一个头文件开头和结尾都会有`#ifndef __xxx`、`#define __xxx`、`#endif /* __xxx */`以避免头文件的重定义，在多文件工程中更是必要操作，定义的内容没有要求，只需满足唯一性即可。
