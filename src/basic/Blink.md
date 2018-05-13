@@ -5,8 +5,8 @@
 
 
 所需文件：
--`Demo`文件`STM32-DEMO.zip`
--工程配置好后的空工程模板
+- `Demo`文件`STM32-DEMO.zip`
+- 工程配置好后的空工程模板
 
 ---
 
@@ -15,7 +15,7 @@
 与空工程模板相比，DEMO工程的差异主要在于`port.c/h`, `led.c/h`,当然还有主函数`main.c/h`,在这一部分将逐一介绍。
 
 #### main文件
-```
+```C
 #include "main.h"
 #include "port.h"
 #include "led.h"
@@ -44,7 +44,7 @@ int main(void)
 
 #### LED文件
 
-```
+```C
 #include "led.h"
 void LED_GPIO_Config(void)
 {		
@@ -74,7 +74,7 @@ void LED_GPIO_Config(void)
 
 `定义结构体`->`设置相关参数`->`调用库函数初始化`->`定义初始状态为灯灭`
 标准库中有很多结构体的相关定义，`右键单击结构体类型`->`Go to Definition of xxx`即可看到相关参数的信息：
-```
+```C
 /** 
   * @brief  GPIO Init structure definition  
   */
@@ -92,7 +92,7 @@ typedef struct
 }GPIO_InitTypeDef;
 ```
 同样的右键选择方式，可以看到各个结构体的枚举变量：
-```
+```C
 typedef enum
 { GPIO_Mode_AIN = 0x0,
   GPIO_Mode_IN_FLOATING = 0x04,
@@ -109,7 +109,7 @@ typedef enum
 而在外设时钟开启和引脚的选择上，需参照`Datasheet`。
 在`DEMO`文件夹中可参照相关文件夹。打开`103RCT6-Datasheet.pdf`。`P31-37`可以找到各个端口的相关信息。此处我们使用`PD2`端口控制的`LED`灯。`p12-13`是芯片的时钟树，可以找到`GPIOD`是挂载在外围总线`APB2`上，故需开启对应的时钟并初始化对应的端口。同样，关于上述`GPIO`模式的设置，在`103RCT6-Ref.pdf`及其中文版中也可以找到相关寄存器和端口位配置说明，至此上述`LED.c`中的代码均可读懂了。
 
-```
+```C
 #ifndef __LED_H
 #define	__LED_H
 #include "stm32f10x.h"
@@ -130,7 +130,7 @@ void LED_GPIO_Config(void);
 
 #### Port文件
 剩下的关于时钟和系统初始化的操作均在这部分文件中进行。在这一部分只对port文件的框架加以介绍，在以后的工程建立中，可再利用此框架做进一步的开发。
-```
+```C
 void Our_Sys_Init(void)
 {
 	RCC_init();
